@@ -44,11 +44,11 @@ public class TransactionService {
     }
 
     public List<Transaction> getTransactionFiltred(Type type,
-                                                   double minAmount, double maxAmount) {
+                                                   Double minAmount, Double maxAmount) {
         return transactionList.stream()
-                .filter(t -> t.getType().equals(type))
-                .filter(t -> t.getAmount() >= minAmount)
-                .filter(t -> t.getAmount() <= maxAmount)
+                .filter(t -> type == null || t.getType().equals(type))
+                .filter(t -> minAmount == null || t.getAmount() >= minAmount)
+                .filter(t -> maxAmount == null || t.getAmount() <= maxAmount)
                 .collect(Collectors.<Transaction>toList());
     }
 

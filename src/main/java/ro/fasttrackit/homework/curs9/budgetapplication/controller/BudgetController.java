@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/transaction")
+@RequestMapping("/transactions")
 public class BudgetController {
 
     private final TransactionService transactionService;
@@ -26,7 +26,7 @@ public class BudgetController {
 
     @GetMapping
     public List<Transaction> getTransactionFilter(@RequestParam(required = false) Type type,
-                                                  @RequestParam(required = false) double minAmount, @RequestParam(required = false) double maxAmount) {
+                                                  @RequestParam(required = false) Double minAmount, @RequestParam(required = false) Double maxAmount) {
 
         return transactionService.getTransactionFiltred(type, minAmount, maxAmount);
     }
@@ -67,5 +67,5 @@ public class BudgetController {
     Transaction addNewTransaction(@RequestBody Transaction transaction) {
         return transactionService.addTransaction(transaction);
     }
-    
+
 }
